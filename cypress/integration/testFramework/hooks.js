@@ -8,7 +8,7 @@ describe('Frames test suite', () => {
     });
   });
   it('frame case', function () {
-    cy.visit('https://rahulshettyacademy.com/angularpractice/');
+    cy.visit(Cypress.env('url') + 'angularpractice/');
     cy.get('.form-group input[name="name"]').type(this.data.name);
     cy.get('select').select(this.data.gender);
     cy.get('h4 input[name="name"]').should('have.value', this.data.name);

@@ -1,7 +1,7 @@
 /// <reference types='Cypress'/>
 describe('My second test suite', () => {
   it('my second case', () => {
-    cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/');
+    cy.visit(Cypress.env('url') + 'seleniumPractise/#/');
     cy.get('.search-keyword').type('ca');
     cy.wait(2000);
     cy.get('.products').as('productsLocator');

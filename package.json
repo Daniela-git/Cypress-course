@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx cypress run ",
+    "headTest": "npm run test -- --headed",
+    "dashboard": "npm run test -- --record --key 786d98e0-9c33-4d56-860b-4c877cde5ec6",
+    "testFramework":"npm run test -- --spec \"cypress/integration/testFramework/*\""
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^8.2.0",
-    "cypress-iframe": "^1.0.1"
+    "cypress-iframe": "^1.0.1",
+    "mocha": "^9.0.3",
+    "mochawesome": "^6.2.2"
   }
 }

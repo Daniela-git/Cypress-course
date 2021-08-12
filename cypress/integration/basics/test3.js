@@ -1,7 +1,7 @@
 /// <reference types='Cypress'/>
 describe('Multiple elements test suite', () => {
   it('case', () => {
-    cy.visit('https://rahulshettyacademy.com/AutomationPractice');
+    cy.visit(Cypress.env('url') + 'AutomationPractice');
 
     //check boxes
     cy.get('#checkBoxOption1')

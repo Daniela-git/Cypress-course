@@ -8,7 +8,7 @@ describe('Frames test suite', () => {
     });
   });
   it('frame case', function () {
-    cy.visit('https://rahulshettyacademy.com/angularpractice/');
+    cy.visit(Cypress.env('url') + 'angularpractice/');
     cy.get(':nth-child(2) > .nav-link').click();
     this.data.productName.forEach((element) => {
       cy.selectProduct(element);

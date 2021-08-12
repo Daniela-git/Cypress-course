@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-08-12T12:08:50.369Z",
+    "end": "2021-08-12T12:09:04.921Z",
+    "duration": 14552,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "eec0c56e-2606-401a-8882-0030f3291f2b",
+      "title": "",
+      "fullFile": "cypress/integration/testFramework/usigPageObject.js",
+      "file": "cypress/integration/testFramework/usigPageObject.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "585dbb11-b925-4c3f-88f4-d6693fc5fe6c",
+          "title": "Frames test suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "frame case",
+              "fullTitle": "Frames test suite frame case",
+              "timedOut": null,
+              "duration": 13167,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const homePage = new _pageObjects.HomePage();\nconst shopPage = new _pageObjects.ShopPage();\nconst checkoutPage = new _pageObjects.CheckoutPage();\nconst purchasePage = new _pageObjects.PurchasePage();\ncy.visit(Cypress.env('url') + 'angularpractice/');\nhomePage.getEditBox().type(this.data.name);\nhomePage.getGender().select(this.data.gender);\nhomePage.getTwoWayDataBinding().should('have.value', this.data.name);\nhomePage.getEditBox().should('have.attr', 'minlength', '2');\nhomePage.getEntreptreneaur().should('be.disabled');\nhomePage.getShopTab().click(); //select products\nthis.data.productName.forEach(element => {\n  cy.selectProduct(element);\n});\nshopPage.getCheckoutButton().click();\nlet sum = 0;\ncheckoutPage.getItemPrices().each((item, index, list) => {\n  const actualText = item.text();\n  const textPrice = actualText.split(' ')[1].trim();\n  const price = parseInt(textPrice);\n  sum = sum + price;\n}).then(() => {\n  cy.log(sum);\n});\ncy.get('h3 strong').then(element => {\n  const amount = element.text();\n  let textTotal = amount.split(' ')[1].trim();\n  expect(Number(textTotal)).to.equal(sum);\n});\ncheckoutPage.getCheckoutButton().click();\npurchasePage.getContryField().type('In');\npurchasePage.getContryOptions().each((item, index, list) => {\n  if (item.text().includes('India')) {\n    list[index].click();\n  }\n});\npurchasePage.getContryField().should('have.value', 'India');\npurchasePage.getAgreeBox().click({\n  force: true\n});\npurchasePage.getPurchaseButton().click();\npurchasePage.getConfirmation().should('include.text', 'Success! Thank you! Your order will be delivered in next few weeks :-).');",
+              "err": {},
+              "uuid": "7d815eca-9729-440f-9e70-62f4e808a1b7",
+              "parentUUID": "585dbb11-b925-4c3f-88f4-d6693fc5fe6c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7d815eca-9729-440f-9e70-62f4e808a1b7"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 13167,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.2.0"
+    }
+  }
+}
